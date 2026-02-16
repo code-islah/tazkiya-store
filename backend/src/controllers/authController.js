@@ -36,7 +36,7 @@ export const registerUser = async (req, res) => {
       name: user.name,
       email: user.email,
       role: user.role,
-      token: generateToken(user._id)
+      token: generateToken(user._id),
     });
   } catch (err) {
     res.status(500).json({
@@ -70,7 +70,7 @@ export const loginUser = async (req, res) => {
         name: user.name,
         email: user.email,
         role: user.role,
-        token: generateToken(user._id)
+        token: generateToken(user._id),
       });
     }
   } catch (err) {

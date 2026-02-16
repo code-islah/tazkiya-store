@@ -12,13 +12,8 @@ connectDB();
 
 const app = express();
 
-
-
 import { protect } from "./middleware/authMiddleware.js";
 import { admin } from "./middleware/adminMiddleware.js";
-
-
-
 
 //middlewares
 
@@ -28,14 +23,12 @@ app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
 
-
 app.get("/api/admin-only", protect, admin, (req, res) => {
   res.json({
     message: "Welcome Admin of Tazkiya Store",
-    user: req.user
+    user: req.user,
   });
 });
-
 
 // test route
 app.get("/", (req, res) => {
@@ -50,31 +43,6 @@ app.listen(PORT, () => {
 });
 */
 
-
-
-
 app.listen(5000, "0.0.0.0", () => {
   console.log("Tazkiya Store running on port 5000");
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
