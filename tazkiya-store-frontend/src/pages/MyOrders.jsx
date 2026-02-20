@@ -2,22 +2,22 @@ import { useEffect, useState } from "react";
 import API from "../api/axios";
 
 const MyOrders = () => {
- const [orders, setOrders] = useState([]);
- 
- useEffect(()=>{
-   const fetchOrders = async () => {
-   try {
-   const {data} = API.get("orders/my");
-   setOrders(data);
-   } catch(err) {
-    console.log(err);
-   }
-    }   
-   fetchOrders();
- },[]);
- 
- return (
-     <div className="p-5">
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const { data } = await API.get("/orders/my");
+        setOrders(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchOrders();
+  }, []);
+
+  return (
+    <div className="p-5">
       <h1 className="text-2xl font-bold mb-4">My Orders</h1>
 
       {orders.map((order) => (
@@ -28,12 +28,7 @@ const MyOrders = () => {
         </div>
       ))}
     </div>
- )
-}
-
-
+  );
+};
 
 export default MyOrders;
-
-
-

@@ -9,8 +9,9 @@ import Navbar from "./components/Navbar.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
 import ProtectedRoute from "./components/ProtectedRoute";
-
-
+import AdminOrders from "./pages/AdminOrders";
+import AdminRoute from "./components/AdminRoute";
+import AdminProducts from "./pages/AdminProducts";
 
 export default function App() {
   return (
@@ -21,17 +22,38 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/cart" element={
-            <ProtectedRoute>
-            <Cart />
-            </ProtectedRoute>
-            } />
-            <Route path="/my-orders" element={
-            <ProtectedRoute>
-            <MyOrders />
-            </ProtectedRoute>
-            } />
-            
+            <Route
+              path="/cart"
+              element={
+                <ProtectedRoute>
+                  <Cart />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/my-orders"
+              element={
+                <ProtectedRoute>
+                  <MyOrders />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/orders"
+              element={
+                <AdminRoute>
+                  <AdminOrders />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/products"
+              element={
+                <AdminRoute>
+                  <AdminProducts />
+                </AdminRoute>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </CartProvider>
