@@ -8,6 +8,7 @@ const AdminProducts = () => {
     price: "",
     description: "",
     image: "",
+    category: ""
   });
 
   const fetchProducts = async () => {
@@ -89,6 +90,16 @@ const AdminProducts = () => {
           onChange={(e) => setForm({ ...form, description: e.target.value })}
           required
         />
+        
+        <input
+        placeholder="Category"
+          value={form.category}
+          className="border p-2 w-full"
+          onChange={(e) => setForm({ ...form, category: e.target.value })}
+          required
+        />
+        
+        
         <button type="submit" className="bg-black text-white px-4 py-2">
           Create Product
         </button>
