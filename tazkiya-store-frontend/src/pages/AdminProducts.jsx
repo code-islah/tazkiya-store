@@ -27,13 +27,13 @@ const AdminProducts = () => {
 
   const createProduct = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.price || !form.description || !form.image) {
+    if (!form.name || !form.price || !form.description || !form.image || !form.category) {
       alert("Please fill all fields");
       return;
     }
     try {
       await API.post("/products", { ...form, price: Number(form.price) });
-      setForm({ name: "", price: "", description: "", image: "" });
+      setForm({ name: "", price: "", description: "", image: "", category: "" });
       fetchProducts();
     } catch (err) {
       console.error("Create error:", err.response?.data || err.message);
@@ -44,7 +44,6 @@ const AdminProducts = () => {
   
    const deleteProduct = async (id) => {
   try {
-    console.log("Deleting ID:", id);
 
     await API.delete(`/products/${id}`);
 
