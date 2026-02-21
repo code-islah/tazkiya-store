@@ -1,0 +1,24 @@
+name: Deploy to InfinityFree
+
+on:
+  push:
+    branches: [ main ]  # or 'master' - check your default branch name
+
+jobs:
+  ftp-deploy:
+    name: 🚀 Deploy via FTP
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📂 Sync files to InfinityFree
+        uses: airvzxf/ftp-deploy-action@latest
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local_dir: "./"  # Uploads everything from your repo root
+          remote_dir: "./htdocs/"  # InfinityFree's public folder
+          delete: "false"  # Set to "true" to delete extra files on server
