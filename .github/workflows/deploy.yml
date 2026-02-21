@@ -1,35 +1,39 @@
-name: Deploy to InfinityFree
+name: Deploy Tazkiya Store to InfinityFree
 
 on:
   push:
-    branches: [ main ]  # or 'master' - check your default branch name
+    branches: [ main ]  # Trigger deploy on push to main
 
 jobs:
-  ftp-deploy:
-    name: 🚀 Deploy via FTP
+  build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: 📥 Checkout code
+      # 1️⃣ Checkout your repo
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: 📦 Setup Node (for Vite build)
+      # 2️⃣ Setup Node (for Vite/React)
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "20"  # adjust if needed
+          node-version: "20"
 
-      - name: 🛠 Install dependencies
+      # 3️⃣ Install dependencies
+      - name: Install Dependencies
         run: npm ci
 
-      - name: 🏗 Build frontend
-        run: npm run build  # make sure this outputs your Vite build into ./dist
+      # 4️⃣ Build the Vite project
+      - name: Build React + Vite Project
+        run: npm run build
 
-      - name: 📂 Sync files to InfinityFree
-        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+      # 5️⃣ Deploy build folder to InfinityFree via FTP
+      - name: Deploy via FTP to InfinityFree
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist  # Vite build output folder
-          server-dir: /htdocs/  # InfinityFree public folder
-          dry-run: false
+          server: ${{ secrets.FTP_SERVER }}        # InfinityFree FTP host (e.g., ftpupload.net)
+          username: ${{ secrets.FTP_USERNAME }}    # FTP username
+          password: ${{ secrets.FTP_PASSWORD }}    # FTP password
+          local-dir: ./dist                         # Vite build output folder
+          server-dir: /htdocs/                      # InfinityFree public folder
+          dry-run: false                            # Set true for testing first
