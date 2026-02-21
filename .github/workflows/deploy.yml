@@ -38,4 +38,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./tazkiya-store-frontend/dist/
           server-dir: /htdocs/
+          delete: true
           dry-run: false
