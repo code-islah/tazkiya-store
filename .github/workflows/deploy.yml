@@ -2,38 +2,40 @@ name: Deploy Tazkiya Store to InfinityFree
 
 on:
   push:
-    branches: [ main ]  # Trigger deploy on push to main
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout your repo
+      # 1️⃣ Checkout the repo
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 2️⃣ Setup Node (for Vite/React)
+      # 2️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "20"
 
-      # 3️⃣ Install dependencies
-      - name: Install Dependencies
+      # 3️⃣ Install frontend dependencies
+      - name: Install Frontend Dependencies
         run: npm ci
+        working-directory: ./tazkiya-store-frontend
 
-      # 4️⃣ Build the Vite project
+      # 4️⃣ Build the frontend project
       - name: Build React + Vite Project
         run: npm run build
+        working-directory: ./tazkiya-store-frontend
 
-      # 5️⃣ Deploy build folder to InfinityFree via FTP
+      # 5️⃣ Deploy built files to InfinityFree via FTP
       - name: Deploy via FTP to InfinityFree
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
-          server: ${{ secrets.FTP_SERVER }}        # InfinityFree FTP host (e.g., ftpupload.net)
-          username: ${{ secrets.FTP_USERNAME }}    # FTP username
-          password: ${{ secrets.FTP_PASSWORD }}    # FTP password
-          local-dir: ./dist                         # Vite build output folder
-          server-dir: /htdocs/                      # InfinityFree public folder
-          dry-run: false                            # Set true for testing first
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./tazkiya-store-frontend/dist
+          server-dir: /htdocs/
+          dry-run: false
