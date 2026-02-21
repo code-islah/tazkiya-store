@@ -40,16 +40,21 @@ const AdminProducts = () => {
     }
   };
 
-  const deleteProduct = async (id) => {
-    try {
-      await API.delete(`/products/${id}`);
-      fetchProducts();
-    } catch (err) {
-      console.error("Delete error:", err.response?.data || err.message);
-      alert("Failed to delete product");
-    }
-  };
+  
+   const deleteProduct = async (id) => {
+  try {
+    console.log("Deleting ID:", id);
 
+    await API.delete(`/products/${id}`);
+
+    fetchProducts();
+  } catch (err) {
+    console.error("DELETE ERROR:", err.response?.data || err.message);
+    alert(err.response?.data?.message || "Delete failed");
+  }
+};
+  
+  
   return (
     <div className="p-5">
       <h1 className="text-2xl font-bold mb-4">Admin Products</h1>
@@ -96,11 +101,10 @@ const AdminProducts = () => {
           <p>৳{p.price}</p>
           <button
             className="bg-red-500 text-white px-2 py-1 mt-2 rounded"
-            onClick={() => {
-              console.log(p._id);
-              deleteProduct(p._id);
-            }}
-          >
+            // In your button onClick, log the ID first
+onClick={() => {
+   deleteProduct(p._id)
+}}>
             Delete
           </button>
         </div>
@@ -110,3 +114,13 @@ const AdminProducts = () => {
 };
 
 export default AdminProducts;
+
+
+
+
+
+
+
+
+
+

@@ -64,14 +64,42 @@ export const updateProduct = async (req, res) => {
 // @route   DELETE /api/products/:id
 // @access  Admin
 
-export const deleteProduct = async (req, res) => {
-  const product = await Product.findById(req.params.id);
 
-  if (product) {
-    await product.remove();
-    res.json({ message: "Product removed" });
-  } else {
-    res.status(404);
-    throw new Error("Product not found");
+export const deleteProduct = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    await product.deleteOne();
+
+    res.json({ message: "Product deleted successfully" });
+
+  } catch (error) {
+    console.error("DELETE ERROR:", error);
+    res.status(500).json({ message: error.message });
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
