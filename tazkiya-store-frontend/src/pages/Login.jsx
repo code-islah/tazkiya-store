@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
   const { login } = useAuth();
@@ -20,7 +20,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center mt-20 clr-text-dark">
       <form onSubmit={submitHandler} className="border p-6 rounded w-80">
         <h2 className="text-xl font-bold mb-4">Login</h2>
         <input
@@ -37,9 +37,15 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="bg-black text-white w-full py-2 rounded">
+        <button className="bg-sky-400 text-white w-full py-2 rounded">
           Login
         </button>{" "}
+        <h5 className="mt-2 p-1">
+          Do you have an account?{" "}
+          <Link to="/register" className="text-blue-400">
+            Create new one.
+          </Link>
+        </h5>
       </form>
     </div>
   );

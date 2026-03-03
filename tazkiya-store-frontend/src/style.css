@@ -1,3 +1,200 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --tazshopColor1: #383841;
+  --tazshopColor2: #f2f2f6;
+  --tazshopColor3: #b2b9ba;
+  --tazshopColor4: #c4c4cc;
+  --tazshopColor5: #9494a3;
+  --tazshopColor6: #98b894;
+}
+
+@font-face {
+  font-family: "BenSenHandwriting";
+  src: url("/fonts/BenSenHandwriting.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+.font-bsh {
+  font-family: "BenSenHandwriting";
+}
+
+.clr-bg-dark {
+  background: var(--tazshopColor1);
+}
+
+.clr-bg-light {
+  background: var(--tazshopColor2);
+}
+
+.clr-bg-green {
+  background: var(--tazshopColor6);
+}
+
+.clr-bg-darkSub {
+  background: var(--tazshopColor5);
+}
+
+.clr-bg-greenSub {
+  background: var(--tazshopColor3);
+}
+
+.clr-bg-lightSub {
+  background: var(--tazshopColor4);
+}
+
+.clr-text-dark {
+  color: var(--tazshopColor1);
+}
+
+.clr-text-light {
+  color: var(--tazshopColor2);
+}
+
+.clr-text-green {
+  color: var(--tazshopColor6);
+}
+
+.clr-text-darkSub {
+  color: var(--tazshopColor5);
+}
+
+.clr-text-greenSub {
+  color: var(--tazshopColor3);
+}
+
+.clr-text-lightSub {
+  color: var(--tazshopColor4);
+}
+
+.text-shadow-white {
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture,
+label {
+  margin: 0;
+}
+
+body {
+  font: 400 0.9rem/1.5;
+  font-family: sans-serif;
+}
+
+nav {
+  background: var(--tazshopColor4);
+}
+
+.nav-link {
+  border-bottom: 1px solid var(--tazshopColor2);
+}
+
+.animateTopToBottom {
+animation: topToBottom 400ms linear;
+
+}
+
+@keyframes topToBottom {
+
+ 0% {
+   transform: scale(.9);
+   opacity: .5
+ }
+ 100% {
+  transform: scale(1);
+  opacity: 1
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import API from "../api/axios";
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
+  const [editingProduct, setEditingProduct] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(true);
+
   const [form, setForm] = useState({
     name: "",
     price: "",
     description: "",
     image: "",
-    category: ""
+    category: "",
   });
 
   const fetchProducts = async () => {
@@ -27,13 +31,25 @@ const AdminProducts = () => {
 
   const createProduct = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.price || !form.description || !form.image || !form.category) {
+    if (
+      !form.name ||
+      !form.price ||
+      !form.description ||
+      !form.image ||
+      !form.category
+    ) {
       alert("Please fill all fields");
       return;
     }
     try {
       await API.post("/products", { ...form, price: Number(form.price) });
-      setForm({ name: "", price: "", description: "", image: "", category: "" });
+      setForm({
+        name: "",
+        price: "",
+        description: "",
+        image: "",
+        category: "",
+      });
       fetchProducts();
     } catch (err) {
       console.error("Create error:", err.response?.data || err.message);
@@ -41,20 +57,22 @@ const AdminProducts = () => {
     }
   };
 
-  
-   const deleteProduct = async (id) => {
-  try {
+  const deleteProduct = async (id) => {
+    try {
+      await API.delete(`/products/${id}`);
 
-    await API.delete(`/products/${id}`);
+      fetchProducts();
+    } catch (err) {
+      console.error("DELETE ERROR:", err.response?.data || err.message);
+      alert(err.response?.data?.message || "Delete failed");
+    }
+  };
 
+  const updateProduct = async (id) => {
+    await API.put(`/products/${id}`);
     fetchProducts();
-  } catch (err) {
-    console.error("DELETE ERROR:", err.response?.data || err.message);
-    alert(err.response?.data?.message || "Delete failed");
-  }
-};
-  
-  
+  };
+
   return (
     <div className="p-5">
       <h1 className="text-2xl font-bold mb-4">Admin Products</h1>
@@ -63,7 +81,7 @@ const AdminProducts = () => {
         <input
           placeholder="Name"
           value={form.name}
-          className="border p-2 w-full"
+          className="border rounded p-2 w-full"
           onChange={(e) => setForm({ ...form, name: e.target.value })}
           required
         />
@@ -71,35 +89,37 @@ const AdminProducts = () => {
           type="number"
           placeholder="Price"
           value={form.price}
-          className="border p-2 w-full"
+          className="border rounded p-2 w-full"
           onChange={(e) => setForm({ ...form, price: e.target.value })}
           required
         />
         <input
           placeholder="Image URL"
           value={form.image}
-          className="border p-2 w-full"
+          className="border rounded p-2 w-full"
           onChange={(e) => setForm({ ...form, image: e.target.value })}
           required
         />
         <input
           placeholder="Description"
           value={form.description}
-          className="border p-2 w-full"
+          className="border rounded p-2 w-full"
           onChange={(e) => setForm({ ...form, description: e.target.value })}
           required
         />
-        
+
         <input
-        placeholder="Category"
+          placeholder="Category"
           value={form.category}
-          className="border p-2 w-full"
+          className="border rounded p-2 w-full"
           onChange={(e) => setForm({ ...form, category: e.target.value })}
           required
         />
-        
-        
-        <button type="submit" className="bg-black text-white px-4 py-2">
+
+        <button
+          type="submit"
+          className="bg-sky-500 text-white rounded px-4 py-2"
+        >
           Create Product
         </button>
       </form>
@@ -109,14 +129,112 @@ const AdminProducts = () => {
         <div key={p._id} className="border p-3 mb-2 rounded">
           <h2 className="font-bold">{p.name}</h2>
           <p>৳{p.price}</p>
-          <button
-            className="bg-red-500 text-white px-2 py-1 mt-2 rounded"
-            // In your button onClick, log the ID first
-onClick={() => {
-   deleteProduct(p._id)
-}}>
-            Delete
-          </button>
+
+          <div className="flex gap-2">
+            {confirmDelete ? (
+              <Fragment>
+                <button
+                  className={`bg-sky-500 text-white px-2 py-1 mt-2 rounded ${showModal ? "hidden" : ""}`}
+                  onClick={() => {
+                    setShowModal((prev) => !prev);
+                    updateProduct(p._id);
+                  }}
+                >
+                  Edit
+                </button>
+
+                <button
+                  className={`bg-red-500 text-white px-2 py-1 mt-2 rounded ${showModal ? "hidden" : ""}`}
+                  onClick={() => {
+                    setConfirmDelete(false);
+                  }}
+                >
+                  Delete
+                </button>
+              </Fragment>
+            ) : (
+              <div className="flex gap-2">
+                <button
+                  className={`bg-sky-500 text-white px-2 py-1 mt-2 rounded ${showModal ? "hidden" : ""}`}
+                  onClick={() => {
+                    deleteProduct(p._id);
+                    setConfirmDelete(true);
+                  }}
+                >
+                  Confirm
+                </button>
+
+                <button
+                  className={`bg-red-500 text-white px-2 py-1 mt-2 rounded ${showModal ? "hidden" : ""}`}
+                  onClick={() => {
+                    setConfirmDelete(true);
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
+            )}
+            {showModal && (
+              <div className="grid gap-[3px] w-full">
+                <input
+                  placeholder="Name"
+                  value={form.name}
+                  className="border p-2 w-full"
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  required
+                />
+                <input
+                  type="number"
+                  placeholder="Price"
+                  value={form.price}
+                  className="border p-2 w-full"
+                  onChange={(e) => setForm({ ...form, price: e.target.value })}
+                  required
+                />
+                <input
+                  placeholder="Image URL"
+                  value={form.image}
+                  className="border p-2 w-full"
+                  onChange={(e) => setForm({ ...form, image: e.target.value })}
+                  required
+                />
+                <input
+                  placeholder="Description"
+                  value={form.description}
+                  className="border p-2 w-full"
+                  onChange={(e) =>
+                    setForm({ ...form, description: e.target.value })
+                  }
+                  required
+                />
+
+                <input
+                  placeholder="Category"
+                  value={form.category}
+                  className="border p-2 w-full"
+                  onChange={(e) =>
+                    setForm({ ...form, category: e.target.value })
+                  }
+                  required
+                />
+                <div className="flex gap-[2px]">
+                  <button className="bg-sky-400 text-white px-2 py-1 mt-2 rounded">
+                    {" "}
+                    Update
+                  </button>
+                  <button
+                    onClick={() => {
+                      setShowModal(false);
+                    }}
+                    className="bg-red-500 text-white px-2 py-1 mt-2 rounded"
+                  >
+                    {" "}
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       ))}
     </div>
@@ -124,13 +242,3 @@ onClick={() => {
 };
 
 export default AdminProducts;
-
-
-
-
-
-
-
-
-
-

@@ -1,14 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+{
+  /* Pages*/
+}
 import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import Cart from "./pages/Cart.jsx";
 import MyOrders from "./pages/MyOrders.jsx";
+import Showcase from "./pages/Showcase.jsx";
+import Register from "./pages/Register.jsx";
+
 import Navbar from "./components/Navbar.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
 import ProtectedRoute from "./components/ProtectedRoute";
+
+{
+  /*For Admin only*/
+}
 import AdminOrders from "./pages/AdminOrders";
 import AdminRoute from "./components/AdminRoute";
 import AdminProducts from "./pages/AdminProducts";
@@ -19,6 +30,7 @@ export default function App() {
       <CartProvider>
         <BrowserRouter>
           <Navbar />
+          <Showcase />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -30,6 +42,9 @@ export default function App() {
                 </ProtectedRoute>
               }
             />
+
+            <Route path="/register" element={<Register />} />
+
             <Route
               path="/my-orders"
               element={
