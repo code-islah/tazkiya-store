@@ -10,34 +10,34 @@ const Home = () => {
   const { addToCart } = useCart();
   const { favItems, setFavItems } = useFavs();
   
-  console.log(useCart())
   
   return (
     <Fragment>
-      <div className="p-5 grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="p-5 grid grid-cols-2 md:grid-cols-3 gap-5">
         {products.map((p) => {
           return (
             <div
               key={p._id}
-              className=" border-sky-100 border-2 p-2 rounded shadow"
+              className="border-sky-100 border-2 p-2 rounded shadow relative h-[270px] overflow-hidden"
             >
               <img
                 src={p.image}
                 alt={p.name}
-                className="rounded object-cover"
+                className="z-[-1] rounded absolute left-0 w-full"
               />
-              <h2 className="font-bold text-lg mt-2">{p.name}</h2>
-              <p className="text-gray-600">{p.description}</p>
-              <p className="mt-1 font-semibold">Price: ৳{p.price}</p>
+              <div className="bg-sky-200 rounded absolute bottom-0 left-0 h-[120px] p-1 w-full">
+              <h2 className="font-bold text-sm mt-2 clr-text-dark">{p.name}</h2>
+              <p className="text-gray-600 text-[10px] clr-text-darkSub">{p.description}</p>
+              <p className="mt-1 font-semibold text-sky-400">৳{p.price}</p>
 
-              <div className="flex gap-2 items-center">
+              <div className="flex absolute bottom-1 gap-2 items-center">
                 <button
+                  className="bg-sky-400 text-white px-3 py-1 mt-2 rounded"
                   onClick={() => {
                     addToCart(p);
                   }}
-                  className="bg-sky-400 text-white px-3 py-1 mt-2 rounded"
                 >
-                  Add to Cart
+                  <img className="w-5 p-[1px]" src="/SVGs/cartPlus.svg" alt="cart"/>
                 </button>
 
                 <button
@@ -57,6 +57,8 @@ const Home = () => {
                   />
                 </button>
               </div>
+              </div>
+              
             </div>
           );
         })}

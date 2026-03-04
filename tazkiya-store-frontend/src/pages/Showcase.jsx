@@ -32,7 +32,7 @@ export default function Showcase() {
         ভালো খাবার, সুস্থ জীবন।
       </p>
 
-      <div className="absolute max-w-full overflow-x-scroll p-1 pt-4 bottom-[10px] flex gap-[1px] backdrop-blur-sm">
+      <div className="absolute max-w-full overflow-x-scroll p-1 px-3 pt-4 bottom-[10px] flex gap-[1px] backdrop-blur-sm">
         {categories.map((cat) => {
           return (
             <span

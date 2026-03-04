@@ -141,14 +141,14 @@ nav {
 }
 
 .animateTopToBottom {
-animation: topToBottom 400ms linear;
+animation: topToBottom 180ms linear;
 
 }
 
 @keyframes topToBottom {
 
  0% {
-   transform: scale(.9);
+   transform: scale(.95);
    opacity: .5
  }
  100% {
