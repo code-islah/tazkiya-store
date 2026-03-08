@@ -18,6 +18,23 @@
   font-style: normal;
 }
 
+.font-BenSenHand {
+  font-family: 'BenSenHandwriting'
+}
+
+body {
+ font-family: "BenSenHandwriting"
+}
+
+.activeCat {
+ background: rgba(0,0,0,0.1);
+ outline: 1px solid var(--tazshopColor5)
+}
+
+
+p, h1, h2, h3, h4, h5, h6 {
+ color: var(--tazshopColor1);
+}
 
 .font-bsh {
   font-family: "BenSenHandwriting";
@@ -159,10 +176,32 @@ animation: topToBottom 180ms linear;
 
 
 
+@keyframes marquee {
+  0% { transform: translateX(50%); }
+  100% { transform: translateX(-100%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
 
 
-
-
+.cartOnNav {
+ position: relative;
+}
+.cartOnNav::before {
+  content: attr(data-cartitemcount);
+  position: absolute;
+  display: grid;
+  place-content: center;
+  top: -10px;
+  right: -10px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: .8rem;
+  font-weight: 800;
+  background: crimson
+}
 
 
 

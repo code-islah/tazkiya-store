@@ -11,6 +11,7 @@ import Cart from "./pages/Cart.jsx";
 import MyOrders from "./pages/MyOrders.jsx";
 import Showcase from "./pages/Showcase.jsx";
 import Register from "./pages/Register.jsx";
+import Footer from "./pages/Footer.jsx";
 
 import Navbar from "./components/Navbar.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
@@ -70,6 +71,7 @@ export default function App() {
               }
             />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </CartProvider>
     </AuthProvider>

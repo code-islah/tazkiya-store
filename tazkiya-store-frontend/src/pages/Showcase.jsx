@@ -21,6 +21,7 @@ export default function Showcase() {
   if (!user) return null;
 
   return (
+  <div>
     <div className="relative h-[370px]">
       <img
         className="[mask-image:linear-gradient(black_50%,transparent)]"
@@ -32,7 +33,14 @@ export default function Showcase() {
         ভালো খাবার, সুস্থ জীবন।
       </p>
 
-      <div className="absolute max-w-full overflow-x-scroll p-1 px-3 pt-4 bottom-[10px] flex gap-[1px] backdrop-blur-sm">
+      <div className="absolute max-w-full overflow-x-scroll p-1 px-3 pt-4 bottom-[10px] flex gap-[3px] backdrop-blur-sm">
+      
+      <span
+              className="activeCat clr-text-dark bg-sky-100/50 border border-sky-400/50 rounded p-2
+  px-2 py-1 backdrop-blur-sm flex-1 whitespace-nowrap font-medium"
+            >
+              All
+            </span>
         {categories.map((cat) => {
           return (
             <span
@@ -59,5 +67,12 @@ export default function Showcase() {
         ❯
       </button>
     </div>
+      <h1 className="shadow font-BenSenHand bg-green-100 p-2 text-center clr-text-dark whitespace-nowrap overflow-x-hidden">
+      <span className="inline-block animate-marquee">
+        এখনই অর্ডার করুন, অতঃপর চলে আসুন আরাম পাড়া, চুয়াডাঙ্গা সদর - মাছের আড়তের পাশে। মোবাঃ ০১৭১৪-৯৯৪১৫৭।
+      </span>
+      </h1>
+    </div>
+
   );
 }
