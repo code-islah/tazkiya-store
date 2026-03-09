@@ -91,7 +91,7 @@ const Navbar = () => {
       }
      }}><img className="w-5" src="/SVGs/fav.svg" alt="Favourite" />
      {showFav && (
-     <div className="animateTopToBottom absolute right-2 p-2 mt-3 w-[95%] text-center z-10"><h1 className="text-left backdrop-blur-md rounded gap-5 bg-sky-100/50">
+     <div className="animateTopToBottom absolute right-2 mt-3 w-[90%] text-center z-10 shadow-lg"><h1 className="text-left backdrop-blur-md rounded gap-5 bg-sky-100/50">
      <span className="py-2 border rounded px-2 bg-sky-400 text-white text-sky-400">You Loved :</span>
      {favItems.map(item => {
      
@@ -129,7 +129,7 @@ const Navbar = () => {
      <div onClick={()=> {
      setShowLocation(prev => !prev);
      }}><img className="w-[18px]" src="/SVGs/location.svg" alt="Location" />
-     { showLocation &&  <div className="animateTopToBottom absolute right-2 p-2 mt-2 w-[80%] z-50">
+     { showLocation &&  <div className="animateTopToBottom absolute right-3 mt-2 w-[80%] z-50 shadow-lg">
       <span className="inline-block py-2 border rounded px-2 bg-sky-400 clr-text-light mt-[-10px]">আমাদের ঠিকানাঃ</span>
      <h1 className="text-center backdrop-blur-md p-2 rounded bg-sky-100/50 gap-2">
      আরাম পাড়া, চুয়াডাঙ্গা। <br /> মাছের আড়তের পাশে, গোরস্থান মসজিদের সম্মুখে।</h1>
@@ -153,7 +153,7 @@ const Navbar = () => {
     src="/SVGs/cart.svg"/>
      </div>
      
-     { showCart && <div className="backdrop-blur-md rounded bg-sky-100/50 animateTopToBottom absolute mt-10 w-[70%] right-3 z-50">
+     { showCart && <div className="backdrop-blur-md rounded bg-sky-100/50 animateTopToBottom absolute mt-10 w-[70%] right-3 z-50 shadow-lg">
      
      <div className="p-2">
       <h1 className="mb-4 border rounded p-2 bg-sky-400 clr-text-light inline-block absolute left-0 top-[-40px]">নির্বাচিত পণ্যঃ</h1>

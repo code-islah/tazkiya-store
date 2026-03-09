@@ -21,7 +21,6 @@ export default function Showcase() {
     setCurrentIdx(currentIdx === images.length - 1 ? 0 : currentIdx + 1);
   };
 
-  if (!user) return null;
 
   return (
   <div>
