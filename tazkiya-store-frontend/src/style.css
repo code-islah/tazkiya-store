@@ -65,11 +65,11 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .clr-text-dark {
-  color: var(--tazshopColor1);
+  color: var(--tazshopColor1) !important;
 }
 
 .clr-text-light {
-  color: var(--tazshopColor2);
+  color: var(--tazshopColor2) !important;
 }
 
 .clr-text-green {

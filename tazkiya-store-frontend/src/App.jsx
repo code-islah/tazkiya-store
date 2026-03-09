@@ -16,6 +16,7 @@ import Footer from "./pages/Footer.jsx";
 import Navbar from "./components/Navbar.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
+import { CategoryProvider } from "./context/CategoryContext.jsx";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 {
@@ -29,6 +30,7 @@ export default function App() {
   return (
     <AuthProvider>
       <CartProvider>
+      <CategoryProvider>
         <BrowserRouter>
           <Navbar />
           <Showcase />
@@ -73,6 +75,7 @@ export default function App() {
           </Routes>
           <Footer />
         </BrowserRouter>
+        </CategoryProvider>
       </CartProvider>
     </AuthProvider>
   );

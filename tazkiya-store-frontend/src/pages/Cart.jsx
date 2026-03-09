@@ -89,8 +89,10 @@ const Cart = () => {
   
   return (
     <div className="p-2">
-      <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
-      {cartItems.length === 0 && <p>No items in cart</p>}
+      <h1 className="text-2xl pt-3 font-bold mb-4">
+      আপনার নির্বাচিত পণ্য
+      </h1>
+      {cartItems.length === 0 && <p className="text-center">এখনই পণ্য নির্বাচন করুন!</p>}
 
       {cartItems.map((item) => {  
         return (
@@ -172,7 +174,7 @@ const Cart = () => {
             className="bg-sky-400 text-white px-4 py-2 mt-3 rounded"
           >
           
-            Place Order - ৳{totalPrice}
+            অর্ডার করুন - ৳{totalPrice}
           </button>
           </div>
         </div>
@@ -183,3 +185,13 @@ const Cart = () => {
 };
 
 export default Cart;
+
+
+
+
+
+
+
+
+
+

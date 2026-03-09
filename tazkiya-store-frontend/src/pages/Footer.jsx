@@ -16,7 +16,15 @@ function Footer(){
    <span>About Us</span>
    <span>Contact</span>
    <span>Instructions on order</span>
-   <span>Web Development</span>
+   <span><a href="https://quranmajid.netlify.app/">Online Al Quran <span
+   className="text-sky-400"
+   >❯</span></a></span>
+   <span><a href="https://codeislah.netlify.app/">Web Development <span
+   className="text-sky-400"
+   >❯</span></a></span>
+   <span><a href="https://agamhisab.netlify.app/">Inventory Management <span
+   className="text-sky-400"
+   >❯</span></a></span>
    <span>Resources</span>
    </div>
    <p className="p-1 py-3 flex gap-2 justify-center clr-bg-dark clr-text-light text-center"><span className="text-sky-400 font-bold">Code Islah</span> - @Copyright {new Date().getFullYear()} <a href="https://github.com/code-islah/tazkiya-store"><img className="w-6" src="/SVGs/github.svg" alt="github" /></a></p>

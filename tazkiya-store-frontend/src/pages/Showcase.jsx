@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useProducts } from "../hooks/useProducts.jsx";
 import { useAuth } from "../context/AuthContext";
+import { CategoryContext } from "../context/CategoryContext.jsx";
+
 
 export default function Showcase() {
   const { categories } = useProducts();
   const { user } = useAuth();
+  const {selectedCategory, setSelectedCategory} = useContext(CategoryContext);
 
   const images = ["/showcase_1.png", "/showcase_2.png", "/showcase_3.png"];
 
@@ -36,17 +39,23 @@ export default function Showcase() {
       <div className="absolute max-w-full overflow-x-scroll p-1 px-3 pt-4 bottom-[10px] flex gap-[3px] backdrop-blur-sm">
       
       <span
-              className="activeCat clr-text-dark bg-sky-100/50 border border-sky-400/50 rounded p-2
-  px-2 py-1 backdrop-blur-sm flex-1 whitespace-nowrap font-medium"
+              className={`clr-text-dark bg-sky-100/50 border border-sky-400/50 rounded p-2
+  px-2 py-1 backdrop-blur-sm flex-1 whitespace-nowrap font-medium ${selectedCategory === "all" ? "activeCat" : ""}`}
+            onClick={()=>{
+            setSelectedCategory("all");
+            }}
             >
               All
             </span>
         {categories.map((cat) => {
           return (
             <span
+              onClick={()=>{
+              setSelectedCategory(cat);
+              }}
               key={cat}
-              className="clr-text-dark bg-sky-100/50 border border-sky-400/50 rounded p-2
-  px-2 py-1 backdrop-blur-sm flex-1 whitespace-nowrap font-medium"
+              className={`clr-text-dark bg-sky-100/50 border border-sky-400/50 rounded p-2
+  px-2 py-1 backdrop-blur-sm flex-1 whitespace-nowrap font-medium ${selectedCategory === cat ? "activeCat" : ""}`}
             >
               {cat}
             </span>
