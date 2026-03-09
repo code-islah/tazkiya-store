@@ -2,9 +2,12 @@ import { useCart } from "../context/CartContext";
 import API from "../api/axios";
 import {useState, useRef, Fragment} from 'react';
 import {Toast} from "./Toast.jsx";
+import { useAuth } from "../context/AuthContext";
+
 
 const Cart = () => {
   const { cartItems, setCartItems,removeFromCart, clearCart } = useCart();
+  const { user } = useAuth();
   
   const [quantities, setQuantities] = useState({});
   const couponCode = "TZ2026";
@@ -24,6 +27,7 @@ const Cart = () => {
       const orderData = {
         orderItems: cartItems.map((item) => ({
           product: item._id,
+          name: item.name,
           quantity: item.quantity,
         })),
         totalPrice,
@@ -180,6 +184,7 @@ const Cart = () => {
         </div>
       )}
     {isCouponApplied && <Toast message="Coupon Applied" type="success" />}
+    
     </div>
   );
 };

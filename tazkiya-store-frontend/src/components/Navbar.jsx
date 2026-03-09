@@ -224,6 +224,7 @@ const Navbar = () => {
           <button
             onClick={() => {
             navigateToCart("/cart");
+            setShowCart(false);
             }}
             className="bg-sky-400 text-white px-4 py-2 mt-3 rounded"
           >

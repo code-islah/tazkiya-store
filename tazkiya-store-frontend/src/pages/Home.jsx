@@ -16,6 +16,7 @@ const Home = () => {
   const [searchVal, setSearchVal] = useState("");
   const [visibleSortingWindow, setVisibleSortingWindow] = useState(false);
   const [sortType, setSortType] = useState("");
+
   
   const categorizedProducts = products.filter(product => {
   return (selectedCategory === "all" ||product.category === selectedCategory) && product.name.toLowerCase().includes(searchVal.toLowerCase());
@@ -77,8 +78,8 @@ const Home = () => {
        
         {visibleSortingWindow &&
         <div
-        className="animateTopToBottom absolute right-11 top-[-100%] grid gap-2
-        clr-text-dark font-bold bg-sky-100/80 border rounded z-50 backdrop-blur-lg"
+        className="animateTopToBottom absolute right-11 top-[-90%] grid gap-2
+        clr-text-dark font-bold bg-sky-100/80 border rounded z-50 backdrop-blur-lg shadow"
         >
         {sortOptions.map(opt => 
           (<span
@@ -98,7 +99,7 @@ const Home = () => {
       
      </div>
       <div className={`p-5 grid ${sortProductsCol ? "grid-cols-1" : "grid-cols-2"} md:grid-cols-3 gap-5`}>   
-        {categorizedProducts.slice(0, visibleProducts).map((p) => {
+        {products.length > 0 ? (categorizedProducts.slice(0, visibleProducts).map((p) => {
           return (
             <div
               key={p._id}
@@ -146,7 +147,13 @@ const Home = () => {
               </div>       
            </div>
           );
-        })}
+        })) : <div
+        className="w-full flex justify-center"
+        >
+        <img 
+        className="w-10"
+        src="/SVGs/spin.svg" alt="Loading..." />
+        </div> }       
       </div>
       {visibleProducts < products.length && 
       <div

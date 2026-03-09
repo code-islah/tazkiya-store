@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -32,10 +32,9 @@ export default function App() {
       <CartProvider>
       <CategoryProvider>
         <BrowserRouter>
-          <Navbar />
-          <Showcase />
+          <Navbar />     
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Fragment><Showcase/><Home /></Fragment>} />
             <Route path="/login" element={<Login />} />
             <Route
               path="/cart"
