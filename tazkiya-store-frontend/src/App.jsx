@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -30,61 +30,60 @@ export default function App() {
   return (
     <AuthProvider>
       <CartProvider>
-      <CategoryProvider>
-        <BrowserRouter>
-          <Navbar />     
-          <Routes>
-            <Route path="/" element={<Fragment><Showcase/><Home /></Fragment>} />
-            <Route path="/login" element={<Login />} />
-            <Route
-              path="/cart"
-              element={
-                <ProtectedRoute>
-                  <Cart />
-                </ProtectedRoute>
-              }
-            />
+        <CategoryProvider>
+          <BrowserRouter>
+            <Navbar />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Fragment>
+                    <Showcase />
+                    <Home />
+                  </Fragment>
+                }
+              />
+              <Route path="/login" element={<Login />} />
+              <Route
+                path="/cart"
+                element={
+                  <ProtectedRoute>
+                    <Cart />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route path="/register" element={<Register />} />
+              <Route path="/register" element={<Register />} />
 
-            <Route
-              path="/my-orders"
-              element={
-                <ProtectedRoute>
-                  <MyOrders />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/orders"
-              element={
-                <AdminRoute>
-                  <AdminOrders />
-                </AdminRoute>
-              }
-            />
-            <Route
-              path="/admin/products"
-              element={
-                <AdminRoute>
-                  <AdminProducts />
-                </AdminRoute>
-              }
-            />
-          </Routes>
-          <Footer />
-        </BrowserRouter>
+              <Route
+                path="/my-orders"
+                element={
+                  <ProtectedRoute>
+                    <MyOrders />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/orders"
+                element={
+                  <AdminRoute>
+                    <AdminOrders />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/admin/products"
+                element={
+                  <AdminRoute>
+                    <AdminProducts />
+                  </AdminRoute>
+                }
+              />
+            </Routes>
+            <Footer />
+          </BrowserRouter>
         </CategoryProvider>
       </CartProvider>
     </AuthProvider>
   );
 }
-
-
-
-
-
-
-
-
-

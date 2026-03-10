@@ -22,7 +22,9 @@ const Cart = () => {
   ) - Number(isCouponApplied ? couponVal : 0);
   
 
-  const placeOrder = async () => {
+  const placeOrder = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
     try {
       const orderData = {
         orderItems: cartItems.map((item) => ({
@@ -34,7 +36,21 @@ const Cart = () => {
       };
 
       await API.post("/orders", orderData);
-      clearCart();
+     
+      await fetch('https://formsubmit.co/ajax/643f3890ee05a12b9551a6d56bcf6163', {
+    method: 'POST',
+    body: formData,
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Error placing order');
+  });
+  
+   clearCart();
       alert("Order placed successfully!");
     } catch (err) {
       alert("Order failed!");
@@ -173,13 +189,23 @@ const Cart = () => {
              <span>সর্বমোটঃ <span className="text-red-600 font-bold">৳{isCouponApplied &&  totalPrice}</span></span>
               </h2>
               
+              <form onSubmit={placeOrder}>
+              <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_template" value="table" />
+        
+  <input type="hidden" name="Order Items" value={cartItems.map(item => `${item.name} (x${item.quantity}) - ${item.price} BDT`).join('\n')} />
+  <input type="hidden" name="Total_Price" value={totalPrice} />
+  <input type="hidden" name="Name" value={user.name} />
+  <input type="hidden" name="Email" value={user.email} />
           <button
-            onClick={placeOrder}
-            className="bg-sky-400 text-white px-4 py-2 mt-3 rounded"
-          >
-          
+            className="bg-sky-400 text-white px-4 py-2 mt-3 rounded w-full"
+          >     
             অর্ডার করুন - ৳{totalPrice}
           </button>
+          
+          </form>
+          
+          
           </div>
         </div>
       )}

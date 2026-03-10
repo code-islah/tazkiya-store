@@ -64,7 +64,6 @@ export const updateProduct = async (req, res) => {
 // @route   DELETE /api/products/:id
 // @access  Admin
 
-
 export const deleteProduct = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -76,30 +75,8 @@ export const deleteProduct = async (req, res) => {
     await product.deleteOne();
 
     res.json({ message: "Product deleted successfully" });
-
   } catch (error) {
     console.error("DELETE ERROR:", error);
     res.status(500).json({ message: error.message });
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

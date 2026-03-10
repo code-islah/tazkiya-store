@@ -18,22 +18,39 @@
   font-style: normal;
 }
 
+
+button:active {
+ transform: scale(.95);
+ filter: brightness(110%)
+}
+
+.addedToCart {
+ outline: 1px solid rgba(14, 165, 233, .5);
+ outline-offset: 2px;
+ filter: brightness(110%);
+}
+
 .font-BenSenHand {
-  font-family: 'BenSenHandwriting'
+  font-family: "BenSenHandwriting";
 }
 
 body {
- font-family: "BenSenHandwriting"
+  font-family: "BenSenHandwriting";
 }
 
 .activeCat {
- background: rgba(0,0,0,0.1);
- outline: 1px solid var(--tazshopColor5)
+  background: rgba(0, 0, 0, 0.1);
+  outline: 1px solid var(--tazshopColor5);
 }
 
-
-p, h1, h2, h3, h4, h5, h6 {
- color: var(--tazshopColor1);
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--tazshopColor1);
 }
 
 .font-bsh {
@@ -158,35 +175,34 @@ nav {
 }
 
 .animateTopToBottom {
-animation: topToBottom 180ms linear;
-
+  animation: topToBottom 180ms linear;
 }
 
 @keyframes topToBottom {
-
- 0% {
-   transform: scale(.95);
-   opacity: .5
- }
- 100% {
-  transform: scale(1);
-  opacity: 1
- }
+  0% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-
-
 @keyframes marquee {
-  0% { transform: translateX(50%); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 .animate-marquee {
   animation: marquee 30s linear infinite;
 }
 
-
 .cartOnNav {
- position: relative;
+  position: relative;
 }
 .cartOnNav::before {
   content: attr(data-cartitemcount);
@@ -198,42 +214,7 @@ animation: topToBottom 180ms linear;
   border-radius: 50%;
   width: 20px;
   height: 20px;
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: 800;
-  background: crimson
+  background: crimson;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
