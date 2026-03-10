@@ -17,7 +17,6 @@ const Home = () => {
   const [visibleSortingWindow, setVisibleSortingWindow] = useState(false);
   const [sortType, setSortType] = useState("");
 
-  console.log(cartItems)
 
   const categorizedProducts = products
     .filter((product) => {

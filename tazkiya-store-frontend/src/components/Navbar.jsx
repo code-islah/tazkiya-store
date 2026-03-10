@@ -324,9 +324,9 @@ const Navbar = () => {
                   </span>{" "}
                 </div>
 
-                <Link to="/cart">Cart</Link>
+                <Link to="/cart">My Cart</Link>
                 <Link to="/my-orders">My Orders</Link>
-                <Link to="#">Favouties</Link>
+                <Link to="#">Favourites</Link>
 
                 {user?.role === "admin" && (
                   <div className="flex text-white p-2 gap-3 justify-evenly border bottom-0 left-0 w-full">
