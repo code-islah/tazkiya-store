@@ -34,6 +34,12 @@ button:active {
   font-family: "BenSenHandwriting";
 }
 
+.links {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-radius: 5px;
+  padding-block: 5px
+}
+
 body {
   font-family: "BenSenHandwriting";
 }

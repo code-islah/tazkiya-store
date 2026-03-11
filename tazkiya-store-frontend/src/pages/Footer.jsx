@@ -14,10 +14,10 @@ function Footer() {
         <div className="grid gap-2 clr-text-dark">
         <input className="w-full px-3 p-1 rounded
         focus:outline focus:outline-2 focus:outline-sky-400
-        " type="text" placeholder="আপনার নামঃ"/>
+        " type="text" placeholder="নামঃ"/>
         <input className="w-full px-3 p-1 rounded
-        focus:outline focus:outline-2 focus:outline-sky-400" type="text" placeholder="আপনার ই-মেইলঃ"/>
-        <textarea className="w-full px-3 p-1 rounded focus:outline focus:outline-2 focus:outline-sky-400" type="text" placeholder="আপনার মতামত-"></textarea>
+        focus:outline focus:outline-2 focus:outline-sky-400" type="text" placeholder="ই-মেইলঃ"/>
+        <textarea className="w-full px-3 p-1 rounded focus:outline focus:outline-2 focus:outline-sky-400" type="text" placeholder="আপনার মতামতঃ"></textarea>
         <div className="flex gap-1">
         <button className="bg-sky-400 text-white flex-1 p-1 rounded">পাঠান</button>
         <button className="bg-sky-400 text-white flex-1 p-1 rounded">মুছুন</button>

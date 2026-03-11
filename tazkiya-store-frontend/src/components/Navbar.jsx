@@ -315,7 +315,7 @@ const Navbar = () => {
                 className={
                   toggler
                     ? "hidden"
-                    : "grid absolute right-2 p-2 mt-2 w-[60%] backdrop-blur-md rounded bg-black/50 gap-2"
+                    : "grid absolute right-2 p-2 mt-2 w-[70%] backdrop-blur-md rounded bg-black/50 gap-2"
                 }
               >
                 <div className="p-1 border rounded  bg-sky-400 text-white">
@@ -324,9 +324,11 @@ const Navbar = () => {
                   </span>{" "}
                 </div>
 
-                <Link to="/cart">My Cart</Link>
-                <Link to="/my-orders">My Orders</Link>
-                <Link to="#">Favourites</Link>
+                <Link className="links" to="/cart">My Cart</Link>
+                <Link className="links" to="/my-orders">My Orders</Link>
+                <Link className="links" to="#">Favourites</Link>
+                <Link className="links" to="#">My Opinions</Link>
+                <Link to="#">Settings</Link>
 
                 {user?.role === "admin" && (
                   <div className="flex text-white p-2 gap-3 justify-evenly border bottom-0 left-0 w-full">

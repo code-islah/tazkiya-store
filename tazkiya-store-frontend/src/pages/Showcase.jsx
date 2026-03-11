@@ -61,13 +61,13 @@ export default function Showcase() {
 
         <button
           onClick={prevSlide}
-          className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-r-lg hover:bg-black/75"
+          className="absolute top-[150px] left-0 bg-black/50 text-white p-2 rounded-r-lg hover:bg-black/75"
         >
           ❮
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-l-lg hover:bg-black/75"
+          className="absolute top-[150px] right-0  bg-black/50 text-white p-2 rounded-l-lg hover:bg-black/75"
         >
           ❯
         </button>
