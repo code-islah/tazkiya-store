@@ -188,7 +188,7 @@ const AdminProducts = () => {
                   placeholder="Price"
                   value={form.price}
                   className="border p-2 w-full"
-                  onChange={(e) => setForm({ ...form, price: e.target.value })}
+                  onChange={(e) => setForm({ ...form, price: Number(e.target.value) })}
                   required
                 />
                 <input
