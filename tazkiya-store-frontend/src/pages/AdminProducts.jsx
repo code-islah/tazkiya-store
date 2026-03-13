@@ -90,7 +90,7 @@ const AdminProducts = () => {
           placeholder="Price"
           value={form.price}
           className="border rounded p-2 w-full"
-          onChange={(e) => setForm({ ...form, price: e.target.value })}
+          onChange={(e) => setForm({ ...form, price: Number(e.target.value) })}
           required
         />
         <input
@@ -137,7 +137,7 @@ const AdminProducts = () => {
                   className={`bg-sky-500 text-white px-2 py-1 mt-2 rounded ${showModal ? "hidden" : ""}`}
                   onClick={() => {
                     setShowModal((prev) => !prev);
-                    updateProduct(p._id);
+                    updateProduct(p._id,form);
                   }}
                 >
                   Edit
@@ -242,3 +242,11 @@ const AdminProducts = () => {
 };
 
 export default AdminProducts;
+
+
+
+
+
+
+
+

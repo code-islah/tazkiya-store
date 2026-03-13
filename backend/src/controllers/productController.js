@@ -49,15 +49,17 @@ export const createProduct = async (req, res) => {
 // @access  Admin
 
 export const updateProduct = async (req, res) => {
-  const product = await Product.findById(req.params.id);
-  if (product) {
-    Object.assign(product, req.body);
-    const updatedProduct = await product.save();
-    res.json(updatedProduct);
-  } else {
-    res.status(404);
-    throw new Error("Product not found");
+  const updatedProduct = await Product.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true }
+  );
+
+  if (!updatedProduct) {
+    return res.status(404).json({ message: "Product not found" });
   }
+
+  res.json(updatedProduct);
 };
 
 // @desc    Delete product
