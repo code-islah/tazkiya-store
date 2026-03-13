@@ -17,7 +17,6 @@ const Home = () => {
   const [visibleSortingWindow, setVisibleSortingWindow] = useState(false);
   const [sortType, setSortType] = useState("");
 
-
   const categorizedProducts = products
     .filter((product) => {
       return (
@@ -136,7 +135,7 @@ const Home = () => {
 
                   <div className="flex absolute bottom-1 gap-2 items-center">
                     <button
-                      className={`shadow bg-sky-400 text-white px-3 py-1 rounded ${cartItems.some(item => item.name === p.name) ? "addedToCart" : ""}`}
+                      className={`shadow bg-sky-400 text-white px-3 py-1 rounded ${cartItems.some((item) => item.name === p.name) ? "addedToCart" : ""}`}
                       onClick={() => {
                         addToCart(p);
                       }}

@@ -6,6 +6,7 @@ const AdminProducts = () => {
   const [editingProduct, setEditingProduct] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(true);
+  const [productToRemove, setProductToRemove] = useState("");
 
   const [form, setForm] = useState({
     name: "",
@@ -137,7 +138,14 @@ const AdminProducts = () => {
                   className={`bg-sky-500 text-white px-2 py-1 mt-2 rounded ${showModal ? "hidden" : ""}`}
                   onClick={() => {
                     setShowModal((prev) => !prev);
-                    updateProduct(p._id,form);
+                    setEditingProduct(p._id);
+                    setForm({
+                    name: p.name,
+    price: p.price,
+    description: p.description,
+    image: p.image,
+    category: p.category
+                    });
                   }}
                 >
                   Edit
@@ -146,6 +154,7 @@ const AdminProducts = () => {
                 <button
                   className={`bg-red-500 text-white px-2 py-1 mt-2 rounded ${showModal ? "hidden" : ""}`}
                   onClick={() => {
+                    setProductToRemove(p.name);
                     setConfirmDelete(false);
                   }}
                 >
@@ -153,7 +162,8 @@ const AdminProducts = () => {
                 </button>
               </Fragment>
             ) : (
-              <div className="flex gap-2">
+              <div className="w-[90%] fixed left-1/2 transform -translate-x-1/2 top-[50%] gap-[3px] p-3 rounded backdrop-blur-md bg-sky-100/50 shadow-sm grid gap-2">
+              <h1 className="text-bold">আপনি কি নিশ্চিতঃ {productToRemove}</h1>
                 <button
                   className={`bg-sky-500 text-white px-2 py-1 mt-2 rounded ${showModal ? "hidden" : ""}`}
                   onClick={() => {
@@ -175,11 +185,12 @@ const AdminProducts = () => {
               </div>
             )}
             {showModal && (
-              <div className="grid gap-[3px] w-full">
+              <div className="w-[90%] fixed top-[20%] left-1/2 transform -translate-x-1/2 grid gap-[3px] p-3 rounded backdrop-blur-md bg-sky-100/50 shadow-sm">
+              <h1 className="py-2 text-sky-400">Product: {form.name}</h1>
                 <input
                   placeholder="Name"
                   value={form.name}
-                  className="border p-2 w-full"
+                  className="rounded border p-2 w-full"
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   required
                 />
@@ -187,21 +198,21 @@ const AdminProducts = () => {
                   type="number"
                   placeholder="Price"
                   value={form.price}
-                  className="border p-2 w-full"
+                  className="rounded border p-2 w-full"
                   onChange={(e) => setForm({ ...form, price: Number(e.target.value) })}
                   required
                 />
                 <input
                   placeholder="Image URL"
                   value={form.image}
-                  className="border p-2 w-full"
+                  className="rounded border p-2 w-full"
                   onChange={(e) => setForm({ ...form, image: e.target.value })}
                   required
                 />
                 <input
                   placeholder="Description"
                   value={form.description}
-                  className="border p-2 w-full"
+                  className="rounded border p-2 w-full"
                   onChange={(e) =>
                     setForm({ ...form, description: e.target.value })
                   }
@@ -211,14 +222,19 @@ const AdminProducts = () => {
                 <input
                   placeholder="Category"
                   value={form.category}
-                  className="border p-2 w-full"
+                  className="rounded border p-2 w-full"
                   onChange={(e) =>
                     setForm({ ...form, category: e.target.value })
                   }
                   required
                 />
                 <div className="flex gap-[2px]">
-                  <button className="bg-sky-400 text-white px-2 py-1 mt-2 rounded">
+                  <button
+                  className="bg-sky-400 text-white px-2 py-1 mt-2 rounded"
+                  onClick={()=>{
+                  updateProduct(editingProduct,form);
+                 setShowModal(false);
+                  }}>
                     {" "}
                     Update
                   </button>

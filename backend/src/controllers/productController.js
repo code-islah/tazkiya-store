@@ -52,7 +52,7 @@ export const updateProduct = async (req, res) => {
   const updatedProduct = await Product.findByIdAndUpdate(
     req.params.id,
     req.body,
-    { new: true }
+    { new: true },
   );
 
   if (!updatedProduct) {

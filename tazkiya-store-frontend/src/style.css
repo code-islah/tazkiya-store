@@ -18,16 +18,15 @@
   font-style: normal;
 }
 
-
 button:active {
- transform: scale(.95);
- filter: brightness(110%)
+  transform: scale(0.95);
+  filter: brightness(110%);
 }
 
 .addedToCart {
- outline: 1px solid rgba(14, 165, 233, .5);
- outline-offset: 2px;
- filter: brightness(110%);
+  outline: 1px solid rgba(14, 165, 233, 0.5);
+  outline-offset: 2px;
+  filter: brightness(110%);
 }
 
 .font-BenSenHand {
@@ -35,9 +34,9 @@ button:active {
 }
 
 .links {
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 5px;
-  padding-block: 5px
+  padding-block: 5px;
 }
 
 body {

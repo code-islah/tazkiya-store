@@ -324,10 +324,18 @@ const Navbar = () => {
                   </span>{" "}
                 </div>
 
-                <Link className="links" to="/cart">My Cart</Link>
-                <Link className="links" to="/my-orders">My Orders</Link>
-                <Link className="links" to="#">Favourites</Link>
-                <Link className="links" to="#">My Opinions</Link>
+                <Link className="links" to="/cart">
+                  My Cart
+                </Link>
+                <Link className="links" to="/my-orders">
+                  My Orders
+                </Link>
+                <Link className="links" to="#">
+                  Favourites
+                </Link>
+                <Link className="links" to="#">
+                  My Opinions
+                </Link>
                 <Link to="#">Settings</Link>
 
                 {user?.role === "admin" && (
@@ -351,10 +359,8 @@ const Navbar = () => {
             </Fragment>
           ) : (
             <Link to="/login">
-            <img
-            className="w-5"
-            src="/SVGs/user.svg"
-            /></Link>
+              <img className="w-5" src="/SVGs/user.svg" />
+            </Link>
           )}
         </div>
       </div>
