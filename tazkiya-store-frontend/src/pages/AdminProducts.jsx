@@ -69,7 +69,7 @@ const AdminProducts = () => {
   };
 
   const updateProduct = async (id) => {
-    await API.put(`/products/${id}`);
+    await API.put(`/products/${id}`,form);
     fetchProducts();
   };
 
