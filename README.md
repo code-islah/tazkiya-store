@@ -13,8 +13,8 @@ Tazkiya Store is a modern full-stack eCommerce web application built with the ME
 - 🛒 Add to Cart & Cart Management
 - 📦 Product Listing & Detailed Product View
 - 🔍 Search & Filter Products
-- 💳 Order Placement System *(if implemented)*
-- 🧑‍💼 Admin Dashboard *(if implemented)*
+- 💳 Order Placement System
+- 🧑‍💼 Admin Dashboard
 - 📱 Fully Responsive Design
 
 ---
@@ -35,7 +35,7 @@ Tazkiya Store is a modern full-stack eCommerce web application built with the ME
 
 ### Other Tools
 - JWT Authentication
-- Cloudinary *(for image upload if used)*
+- Cloudinary
 - Vercel / Render *(deployment)*
 
 ---
