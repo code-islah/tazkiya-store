@@ -56,7 +56,7 @@ Tazkiya Store is designed to simulate a real-world eCommerce platform. The proje
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/tazkiya-store.git
+git clone https://github.com/code-islah/tazkiya-store.git
 
 # Navigate to project
 cd tazkiya-store
