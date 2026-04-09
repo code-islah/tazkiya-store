@@ -114,12 +114,12 @@ const Home = () => {
             return (
               <div
                 key={p._id}
-                className={`shadow-md rounded relative ${sortProductsCol ? "h-[130px]" : "h-[230px]"} overflow-hidden`}
+                className={`shadow-md bg-white rounded relative ${sortProductsCol ? "h-[130px]" : "h-[230px]"} overflow-hidden`}
               >
                 <img
                   src={p.image}
                   alt={p.name}
-                  className={`scale-[.9] z-[-1] rounded absolute ${sortProductsCol ? "right-0 top-0 w-[50%]" : "left-0 w-full"}`}
+                  className={`scale-[.9] rounded absolute ${sortProductsCol ? "right-0 top-0 w-[50%]" : "left-0 w-full"}`}
                 />
                 {/* Product info wrapper */}
                 <div

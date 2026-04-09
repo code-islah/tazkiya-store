@@ -8,9 +8,9 @@ export default function Showcase() {
   const { user } = useAuth();
   const { selectedCategory, setSelectedCategory } = useContext(CategoryContext);
 
-  const images = ["/showcase_1.png", "/showcase_2.png", "/showcase_3.png"];
+  const images = ["./showcase_1.png", "./showcase_2.png", "./showcase_3.png"];
 
-  const [currentIdx, setCurrentIdx] = useState(0);
+  const [currentIdx, setCurrentIdx] = useState(2);
 
   const prevSlide = () => {
     setCurrentIdx(currentIdx === 0 ? images.length - 1 : currentIdx - 1);
@@ -24,7 +24,7 @@ export default function Showcase() {
     <div>
       <div className="relative h-[370px]">
         <img
-          className="[mask-image:linear-gradient(black_50%,transparent)]"
+          className="showcase-image [mask-image:linear-gradient(black_50%,transparent)]"
           src={images[currentIdx]}
           alt="Showcase"
         />

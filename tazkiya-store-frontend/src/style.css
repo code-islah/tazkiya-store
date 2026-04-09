@@ -11,6 +11,10 @@
   --tazshopColor6: #98b894;
 }
 
+*::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
+
 @font-face {
   font-family: "BenSenHandwriting";
   src: url("/fonts/BenSenHandwriting.ttf") format("truetype");
@@ -41,6 +45,22 @@ button:active {
 
 body {
   font-family: "BenSenHandwriting";
+}
+
+@media screen and (min-width:500px){
+
+    body {
+      background: rgba(125, 211, 252, .5);
+    }
+   body #root {
+    max-width: 980px;
+    margin: 0 auto;
+   }
+
+  .showcase-image {
+    filter: blur(px);
+    z-index: -10;
+  }
 }
 
 .activeCat {
